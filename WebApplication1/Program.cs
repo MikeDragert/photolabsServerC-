@@ -2,12 +2,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Photolabs.DAL;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<PhotolabsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PhotolabsContext") ?? throw new InvalidOperationException("Connection string 'PhotolabsContext' not found.")));
-
 // Add services to the container.
 
+builder.Services.AddDbContext<PhotolabContext>(option => {
+  option.UseNpgsql(builder.Configuration.GetConnectionString("PhotolabsContext"));
+});
+
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+          builder.AllowAnyOrigin()
+          .AllowAnyHeader()
+          .AllowAnyMethod();
+        }
+      )
+);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,9 +29,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment()) {
   app.UseSwagger();
   app.UseSwaggerUI();
+  app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

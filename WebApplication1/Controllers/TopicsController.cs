@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
 
-namespace WebApplication1.Controllers
+namespace PhotolabsCSharp.Controllers
 {
     public class TopicsController : Controller
     {
-        private readonly PhotolabsContext _context;
+        private readonly PhotolabContext _context;
 
-        public TopicsController(PhotolabsContext context)
+        public TopicsController(PhotolabContext context)
         {
             _context = context;
         }
@@ -22,20 +22,20 @@ namespace WebApplication1.Controllers
         // GET: Topics
         public async Task<IActionResult> Index()
         {
-              return _context.Topic != null ? 
-                          View(await _context.Topic.ToListAsync()) :
-                          Problem("Entity set 'PhotolabsContext.Topic'  is null.");
+              return _context.Topics != null ? 
+                          View(await _context.Topics.ToListAsync()) :
+                          Problem("Entity set 'PhotolabContext.Topics'  is null.");
         }
 
         // GET: Topics/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Topic == null)
+            if (id == null || _context.Topics == null)
             {
                 return NotFound();
             }
 
-            var topic = await _context.Topic
+            var topic = await _context.Topics
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (topic == null)
             {
@@ -70,12 +70,12 @@ namespace WebApplication1.Controllers
         // GET: Topics/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Topic == null)
+            if (id == null || _context.Topics == null)
             {
                 return NotFound();
             }
 
-            var topic = await _context.Topic.FindAsync(id);
+            var topic = await _context.Topics.FindAsync(id);
             if (topic == null)
             {
                 return NotFound();
@@ -121,12 +121,12 @@ namespace WebApplication1.Controllers
         // GET: Topics/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Topic == null)
+            if (id == null || _context.Topics == null)
             {
                 return NotFound();
             }
 
-            var topic = await _context.Topic
+            var topic = await _context.Topics
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (topic == null)
             {
@@ -141,14 +141,14 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Topic == null)
+            if (_context.Topics == null)
             {
-                return Problem("Entity set 'PhotolabsContext.Topic'  is null.");
+                return Problem("Entity set 'PhotolabContext.Topics'  is null.");
             }
-            var topic = await _context.Topic.FindAsync(id);
+            var topic = await _context.Topics.FindAsync(id);
             if (topic != null)
             {
-                _context.Topic.Remove(topic);
+                _context.Topics.Remove(topic);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
 
         private bool TopicExists(int id)
         {
-          return (_context.Topic?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Topics?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

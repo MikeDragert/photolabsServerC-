@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
 
-namespace WebApplication1.Controllers
+namespace PhotolabsCSharp.Controllers
 {
     public class UserAccountsController : Controller
     {
-        private readonly PhotolabsContext _context;
+        private readonly PhotolabContext _context;
 
-        public UserAccountsController(PhotolabsContext context)
+        public UserAccountsController(PhotolabContext context)
         {
             _context = context;
         }
@@ -22,20 +22,20 @@ namespace WebApplication1.Controllers
         // GET: UserAccounts
         public async Task<IActionResult> Index()
         {
-              return _context.UserAccount != null ? 
-                          View(await _context.UserAccount.ToListAsync()) :
-                          Problem("Entity set 'PhotolabsContext.UserAccount'  is null.");
+              return _context.UserAccounts != null ? 
+                          View(await _context.UserAccounts.ToListAsync()) :
+                          Problem("Entity set 'PhotolabContext.UserAccounts'  is null.");
         }
 
         // GET: UserAccounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.UserAccount == null)
+            if (id == null || _context.UserAccounts == null)
             {
                 return NotFound();
             }
 
-            var userAccount = await _context.UserAccount
+            var userAccount = await _context.UserAccounts
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (userAccount == null)
             {
@@ -70,12 +70,12 @@ namespace WebApplication1.Controllers
         // GET: UserAccounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.UserAccount == null)
+            if (id == null || _context.UserAccounts == null)
             {
                 return NotFound();
             }
 
-            var userAccount = await _context.UserAccount.FindAsync(id);
+            var userAccount = await _context.UserAccounts.FindAsync(id);
             if (userAccount == null)
             {
                 return NotFound();
@@ -121,12 +121,12 @@ namespace WebApplication1.Controllers
         // GET: UserAccounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.UserAccount == null)
+            if (id == null || _context.UserAccounts == null)
             {
                 return NotFound();
             }
 
-            var userAccount = await _context.UserAccount
+            var userAccount = await _context.UserAccounts
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (userAccount == null)
             {
@@ -141,14 +141,14 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.UserAccount == null)
+            if (_context.UserAccounts == null)
             {
-                return Problem("Entity set 'PhotolabsContext.UserAccount'  is null.");
+                return Problem("Entity set 'PhotolabContext.UserAccounts'  is null.");
             }
-            var userAccount = await _context.UserAccount.FindAsync(id);
+            var userAccount = await _context.UserAccounts.FindAsync(id);
             if (userAccount != null)
             {
-                _context.UserAccount.Remove(userAccount);
+                _context.UserAccounts.Remove(userAccount);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
 
         private bool UserAccountExists(int id)
         {
-          return (_context.UserAccount?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.UserAccounts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

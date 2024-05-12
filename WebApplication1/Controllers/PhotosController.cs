@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
 
-namespace WebApplication1.Controllers
+namespace PhotolabsCSharp.Controllers
 {
     public class PhotosController : Controller
     {
-        private readonly PhotolabsContext _context;
+        private readonly PhotolabContext _context;
 
-        public PhotosController(PhotolabsContext context)
+        public PhotosController(PhotolabContext context)
         {
             _context = context;
         }
@@ -22,20 +22,20 @@ namespace WebApplication1.Controllers
         // GET: Photos
         public async Task<IActionResult> Index()
         {
-              return _context.Photo != null ? 
-                          View(await _context.Photo.ToListAsync()) :
-                          Problem("Entity set 'PhotolabsContext.Photo'  is null.");
+              return _context.Photos != null ? 
+                          View(await _context.Photos.ToListAsync()) :
+                          Problem("Entity set 'PhotolabContext.Photos'  is null.");
         }
 
         // GET: Photos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Photo == null)
+            if (id == null || _context.Photos == null)
             {
                 return NotFound();
             }
 
-            var photo = await _context.Photo
+            var photo = await _context.Photos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (photo == null)
             {
@@ -70,12 +70,12 @@ namespace WebApplication1.Controllers
         // GET: Photos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Photo == null)
+            if (id == null || _context.Photos == null)
             {
                 return NotFound();
             }
 
-            var photo = await _context.Photo.FindAsync(id);
+            var photo = await _context.Photos.FindAsync(id);
             if (photo == null)
             {
                 return NotFound();
@@ -121,12 +121,12 @@ namespace WebApplication1.Controllers
         // GET: Photos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Photo == null)
+            if (id == null || _context.Photos == null)
             {
                 return NotFound();
             }
 
-            var photo = await _context.Photo
+            var photo = await _context.Photos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (photo == null)
             {
@@ -141,14 +141,14 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Photo == null)
+            if (_context.Photos == null)
             {
-                return Problem("Entity set 'PhotolabsContext.Photo'  is null.");
+                return Problem("Entity set 'PhotolabContext.Photos'  is null.");
             }
-            var photo = await _context.Photo.FindAsync(id);
+            var photo = await _context.Photos.FindAsync(id);
             if (photo != null)
             {
-                _context.Photo.Remove(photo);
+                _context.Photos.Remove(photo);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
 
         private bool PhotoExists(int id)
         {
-          return (_context.Photo?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Photos?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

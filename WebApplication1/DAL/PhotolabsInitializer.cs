@@ -1,23 +1,28 @@
 ﻿using Microsoft.AspNetCore.Identity;
 //using Photolabs.Controllers;
 using Photolabs.Models;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Photolabs.DAL {
-  public class PhotolabsInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<PhotolabContext>  {
-    protected override void Seed(PhotolabContext context) {
-      List<Topic> topics = new List<Topic> {
+  public class PhotolabsInitializer {
+    public void Seed(ModelBuilder modelBuilder) {
+
+      modelBuilder.UseIdentityColumns();
+      modelBuilder.Entity<Topic>().Property(person => person.Id).HasIdentityOptions(startValue: 100);
+      modelBuilder.Entity<UserAccount>().Property(person => person.Id).HasIdentityOptions(startValue: 100);
+      modelBuilder.Entity<Photo>().Property(person => person.Id).HasIdentityOptions(startValue: 100);
+
+
+      modelBuilder.Entity<Topic>().HasData(
         new Topic{Id=1, Title="People",  Slug="people"},
         new Topic{Id=2, Title="Nature",  Slug="nature"},
         new Topic{Id=3, Title="Travel",  Slug="travel"},
         new Topic{Id=4, Title="Animals", Slug="animals"},
         new Topic{Id=5, Title="Fashion", Slug="fashion"}
-      };
+      );
 
-      topics.ForEach(topic => context.Topics.Add(topic));
-      context.SaveChanges();
-
-      List<UserAccount> userAccounts = new List<UserAccount>{
+      modelBuilder.Entity<UserAccount>().HasData(
         new UserAccount{Id=1, FullName="John Doe", Username="jdoe", ProfileUrl="profile-1.jpg"},
         new UserAccount{Id=2, FullName="Alice Wonderland", Username="awond", ProfileUrl="profile-2.jpg"},
         new UserAccount{Id=3, FullName="Sita Dennis", Username="sitad", ProfileUrl="profile-3.jpg"},
@@ -28,12 +33,9 @@ namespace Photolabs.DAL {
         new UserAccount{Id=8, FullName="Dwayne Jacob", Username="jdwayne", ProfileUrl="profile-8.jpg"},
         new UserAccount{Id=9, FullName="Allison Saeng", Username="saeng", ProfileUrl="profile-9.jpg"},
         new UserAccount{Id=10,FullName= "Adrea Santos", Username="santa", ProfileUrl="profile-10.jpg" }
-      };
+      );
 
-      userAccounts.ForEach(userAccount => context.UserAccounts.Add(userAccount));
-      context.SaveChanges();
-
-      List<Photo> photos = new List<Photo> {
+      modelBuilder.Entity<Photo>().HasData(
         new Photo{Id=1,  FullUrl="Image-1-Full.jpeg", RegularUrl="Image-1-Regular.jpeg", City="Montreal", Country="Canada"},
         new Photo{Id=11, FullUrl="people-1-full.jpg", RegularUrl="people-1-regular.jpg", City="Toronto", Country="Canada"},
         new Photo{Id=12, FullUrl="people-2-full.jpg", RegularUrl="people-2-regular.jpg", City="Vancouver", Country="Canada"},
@@ -79,11 +81,7 @@ namespace Photolabs.DAL {
         new Photo{Id=57, FullUrl="fashion-7-full.jpg", RegularUrl="fashion-7-regular.jpg", City="Toronto", Country="Canada"},
         new Photo{Id=58, FullUrl="fashion-8-full.jpg", RegularUrl="fashion-8-regular.jpg", City="Vancouver", Country="Canada"},
         new Photo{Id=59, FullUrl="fashion-9-full.jpg", RegularUrl="fashion-9-regular.jpg", City="Calgary", Country="Canada"}
-      };
-
-      photos.ForEach(photo => context.Photos.Add(photo));
-      context.SaveChanges();
-
+      );
     }
   }
 }
