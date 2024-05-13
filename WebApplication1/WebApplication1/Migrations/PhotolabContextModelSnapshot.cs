@@ -68,7 +68,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "Image-1-Full.jpeg",
-                            RegularUrl = "Image-1-Regular.jpeg"
+                            RegularUrl = "Image-1-Regular.jpeg",
+                            TopicId = 1,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -76,7 +78,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "people-1-full.jpg",
-                            RegularUrl = "people-1-regular.jpg"
+                            RegularUrl = "people-1-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -84,7 +88,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "people-2-full.jpg",
-                            RegularUrl = "people-2-regular.jpg"
+                            RegularUrl = "people-2-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 2
                         },
                         new
                         {
@@ -92,7 +98,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "people-3-full.jpg",
-                            RegularUrl = "people-3-regular.jpg"
+                            RegularUrl = "people-3-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 3
                         },
                         new
                         {
@@ -100,7 +108,9 @@ namespace WebApplication1.Migrations
                             City = "Victoria",
                             Country = "Canada",
                             FullUrl = "people-4-full.jpg",
-                            RegularUrl = "people-4-regular.jpg"
+                            RegularUrl = "people-4-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 4
                         },
                         new
                         {
@@ -108,7 +118,9 @@ namespace WebApplication1.Migrations
                             City = "Ottawa",
                             Country = "Canada",
                             FullUrl = "people-5-full.jpg",
-                            RegularUrl = "people-5-regular.jpg"
+                            RegularUrl = "people-5-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 5
                         },
                         new
                         {
@@ -116,7 +128,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "people-6-full.jpg",
-                            RegularUrl = "people-6-regular.jpg"
+                            RegularUrl = "people-6-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 6
                         },
                         new
                         {
@@ -124,7 +138,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "people-7-full.jpg",
-                            RegularUrl = "people-7-regular.jpg"
+                            RegularUrl = "people-7-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 7
                         },
                         new
                         {
@@ -132,7 +148,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "people-8-full.jpg",
-                            RegularUrl = "people-8-regular.jpg"
+                            RegularUrl = "people-8-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 8
                         },
                         new
                         {
@@ -140,7 +158,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "people-9-full.jpg",
-                            RegularUrl = "people-9-regular.jpg"
+                            RegularUrl = "people-9-regular.jpg",
+                            TopicId = 1,
+                            UserAccountId = 9
                         },
                         new
                         {
@@ -148,7 +168,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "nature-1-full.jpg",
-                            RegularUrl = "nature-1-regular.jpg"
+                            RegularUrl = "nature-1-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -156,7 +178,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "nature-2-full.jpg",
-                            RegularUrl = "nature-2-regular.jpg"
+                            RegularUrl = "nature-2-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 2
                         },
                         new
                         {
@@ -164,7 +188,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "nature-3-full.jpg",
-                            RegularUrl = "nature-3-regular.jpg"
+                            RegularUrl = "nature-3-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 3
                         },
                         new
                         {
@@ -172,7 +198,9 @@ namespace WebApplication1.Migrations
                             City = "Victoria",
                             Country = "Canada",
                             FullUrl = "nature-4-full.jpg",
-                            RegularUrl = "nature-4-regular.jpg"
+                            RegularUrl = "nature-4-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 4
                         },
                         new
                         {
@@ -180,7 +208,9 @@ namespace WebApplication1.Migrations
                             City = "Ottawa",
                             Country = "Canada",
                             FullUrl = "nature-5-full.jpg",
-                            RegularUrl = "nature-5-regular.jpg"
+                            RegularUrl = "nature-5-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 5
                         },
                         new
                         {
@@ -188,7 +218,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "nature-6-full.jpg",
-                            RegularUrl = "nature-6-regular.jpg"
+                            RegularUrl = "nature-6-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 6
                         },
                         new
                         {
@@ -196,7 +228,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "nature-7-full.jpg",
-                            RegularUrl = "nature-7-regular.jpg"
+                            RegularUrl = "nature-7-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 7
                         },
                         new
                         {
@@ -204,7 +238,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "nature-8-full.jpg",
-                            RegularUrl = "nature-8-regular.jpg"
+                            RegularUrl = "nature-8-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 8
                         },
                         new
                         {
@@ -212,7 +248,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "nature-9-full.jpg",
-                            RegularUrl = "nature-9-regular.jpg"
+                            RegularUrl = "nature-9-regular.jpg",
+                            TopicId = 2,
+                            UserAccountId = 9
                         },
                         new
                         {
@@ -220,7 +258,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "travel-1-full.jpg",
-                            RegularUrl = "travel-1-regular.jpg"
+                            RegularUrl = "travel-1-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -228,7 +268,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "travel-2-full.jpg",
-                            RegularUrl = "travel-2-regular.jpg"
+                            RegularUrl = "travel-2-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 2
                         },
                         new
                         {
@@ -236,7 +278,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "travel-3-full.jpg",
-                            RegularUrl = "travel-3-regular.jpg"
+                            RegularUrl = "travel-3-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 3
                         },
                         new
                         {
@@ -244,7 +288,9 @@ namespace WebApplication1.Migrations
                             City = "Victoria",
                             Country = "Canada",
                             FullUrl = "travel-4-full.jpg",
-                            RegularUrl = "travel-4-regular.jpg"
+                            RegularUrl = "travel-4-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 4
                         },
                         new
                         {
@@ -252,7 +298,9 @@ namespace WebApplication1.Migrations
                             City = "Ottawa",
                             Country = "Canada",
                             FullUrl = "travel-5-full.jpg",
-                            RegularUrl = "travel-5-regular.jpg"
+                            RegularUrl = "travel-5-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 5
                         },
                         new
                         {
@@ -260,7 +308,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "travel-6-full.jpg",
-                            RegularUrl = "travel-6-regular.jpg"
+                            RegularUrl = "travel-6-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 6
                         },
                         new
                         {
@@ -268,7 +318,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "travel-7-full.jpg",
-                            RegularUrl = "travel-7-regular.jpg"
+                            RegularUrl = "travel-7-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 7
                         },
                         new
                         {
@@ -276,7 +328,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "travel-8-full.jpg",
-                            RegularUrl = "travel-8-regular.jpg"
+                            RegularUrl = "travel-8-regular.jpg",
+                            TopicId = 3,
+                            UserAccountId = 8
                         },
                         new
                         {
@@ -284,7 +338,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "animals-1-full.jpg",
-                            RegularUrl = "animals-1-regular.jpg"
+                            RegularUrl = "animals-1-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -292,7 +348,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "animals-2-full.jpg",
-                            RegularUrl = "animals-2-regular.jpg"
+                            RegularUrl = "animals-2-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 2
                         },
                         new
                         {
@@ -300,7 +358,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "animals-3-full.jpg",
-                            RegularUrl = "animals-3-regular.jpg"
+                            RegularUrl = "animals-3-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 3
                         },
                         new
                         {
@@ -308,7 +368,9 @@ namespace WebApplication1.Migrations
                             City = "Victoria",
                             Country = "Canada",
                             FullUrl = "animals-4-full.jpg",
-                            RegularUrl = "animals-4-regular.jpg"
+                            RegularUrl = "animals-4-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 4
                         },
                         new
                         {
@@ -316,7 +378,9 @@ namespace WebApplication1.Migrations
                             City = "Ottawa",
                             Country = "Canada",
                             FullUrl = "animals-5-full.jpg",
-                            RegularUrl = "animals-5-regular.jpg"
+                            RegularUrl = "animals-5-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 5
                         },
                         new
                         {
@@ -324,7 +388,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "animals-6-full.jpg",
-                            RegularUrl = "animals-6-regular.jpg"
+                            RegularUrl = "animals-6-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 6
                         },
                         new
                         {
@@ -332,7 +398,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "animals-7-full.jpg",
-                            RegularUrl = "animals-7-regular.jpg"
+                            RegularUrl = "animals-7-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 7
                         },
                         new
                         {
@@ -340,7 +408,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "animals-8-full.jpg",
-                            RegularUrl = "animals-8-regular.jpg"
+                            RegularUrl = "animals-8-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 8
                         },
                         new
                         {
@@ -348,7 +418,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "animals-9-full.jpg",
-                            RegularUrl = "animals-9-regular.jpg"
+                            RegularUrl = "animals-9-regular.jpg",
+                            TopicId = 4,
+                            UserAccountId = 9
                         },
                         new
                         {
@@ -356,7 +428,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "fashion-1-full.jpg",
-                            RegularUrl = "fashion-1-regular.jpg"
+                            RegularUrl = "fashion-1-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 1
                         },
                         new
                         {
@@ -364,7 +438,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "fashion-2-full.jpg",
-                            RegularUrl = "fashion-2-regular.jpg"
+                            RegularUrl = "fashion-2-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 2
                         },
                         new
                         {
@@ -372,7 +448,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "fashion-3-full.jpg",
-                            RegularUrl = "fashion-3-regular.jpg"
+                            RegularUrl = "fashion-3-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 3
                         },
                         new
                         {
@@ -380,7 +458,9 @@ namespace WebApplication1.Migrations
                             City = "Victoria",
                             Country = "Canada",
                             FullUrl = "fashion-4-full.jpg",
-                            RegularUrl = "fashion-4-regular.jpg"
+                            RegularUrl = "fashion-4-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 4
                         },
                         new
                         {
@@ -388,7 +468,9 @@ namespace WebApplication1.Migrations
                             City = "Ottawa",
                             Country = "Canada",
                             FullUrl = "fashion-5-full.jpg",
-                            RegularUrl = "fashion-5-regular.jpg"
+                            RegularUrl = "fashion-5-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 5
                         },
                         new
                         {
@@ -396,7 +478,9 @@ namespace WebApplication1.Migrations
                             City = "Montreal",
                             Country = "Canada",
                             FullUrl = "fashion-6-full.jpg",
-                            RegularUrl = "fashion-6-regular.jpg"
+                            RegularUrl = "fashion-6-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 6
                         },
                         new
                         {
@@ -404,7 +488,9 @@ namespace WebApplication1.Migrations
                             City = "Toronto",
                             Country = "Canada",
                             FullUrl = "fashion-7-full.jpg",
-                            RegularUrl = "fashion-7-regular.jpg"
+                            RegularUrl = "fashion-7-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 7
                         },
                         new
                         {
@@ -412,7 +498,9 @@ namespace WebApplication1.Migrations
                             City = "Vancouver",
                             Country = "Canada",
                             FullUrl = "fashion-8-full.jpg",
-                            RegularUrl = "fashion-8-regular.jpg"
+                            RegularUrl = "fashion-8-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 8
                         },
                         new
                         {
@@ -420,7 +508,9 @@ namespace WebApplication1.Migrations
                             City = "Calgary",
                             Country = "Canada",
                             FullUrl = "fashion-9-full.jpg",
-                            RegularUrl = "fashion-9-regular.jpg"
+                            RegularUrl = "fashion-9-regular.jpg",
+                            TopicId = 5,
+                            UserAccountId = 9
                         });
                 });
 

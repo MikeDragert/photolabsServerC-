@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class seed : Migration
+    public partial class seed2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,58 +47,6 @@ namespace WebApplication1.Migrations
                 .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.InsertData(
-                table: "Photos",
-                columns: new[] { "Id", "City", "Country", "FullUrl", "RegularUrl", "TopicId", "UserAccountId" },
-                values: new object[,]
-                {
-                    { 1, "Montreal", "Canada", "Image-1-Full.jpeg", "Image-1-Regular.jpeg", null, null },
-                    { 11, "Toronto", "Canada", "people-1-full.jpg", "people-1-regular.jpg", null, null },
-                    { 12, "Vancouver", "Canada", "people-2-full.jpg", "people-2-regular.jpg", null, null },
-                    { 13, "Calgary", "Canada", "people-3-full.jpg", "people-3-regular.jpg", null, null },
-                    { 14, "Victoria", "Canada", "people-4-full.jpg", "people-4-regular.jpg", null, null },
-                    { 15, "Ottawa", "Canada", "people-5-full.jpg", "people-5-regular.jpg", null, null },
-                    { 16, "Montreal", "Canada", "people-6-full.jpg", "people-6-regular.jpg", null, null },
-                    { 17, "Toronto", "Canada", "people-7-full.jpg", "people-7-regular.jpg", null, null },
-                    { 18, "Vancouver", "Canada", "people-8-full.jpg", "people-8-regular.jpg", null, null },
-                    { 19, "Calgary", "Canada", "people-9-full.jpg", "people-9-regular.jpg", null, null },
-                    { 21, "Toronto", "Canada", "nature-1-full.jpg", "nature-1-regular.jpg", null, null },
-                    { 22, "Vancouver", "Canada", "nature-2-full.jpg", "nature-2-regular.jpg", null, null },
-                    { 23, "Calgary", "Canada", "nature-3-full.jpg", "nature-3-regular.jpg", null, null },
-                    { 24, "Victoria", "Canada", "nature-4-full.jpg", "nature-4-regular.jpg", null, null },
-                    { 25, "Ottawa", "Canada", "nature-5-full.jpg", "nature-5-regular.jpg", null, null },
-                    { 26, "Montreal", "Canada", "nature-6-full.jpg", "nature-6-regular.jpg", null, null },
-                    { 27, "Toronto", "Canada", "nature-7-full.jpg", "nature-7-regular.jpg", null, null },
-                    { 28, "Vancouver", "Canada", "nature-8-full.jpg", "nature-8-regular.jpg", null, null },
-                    { 29, "Calgary", "Canada", "nature-9-full.jpg", "nature-9-regular.jpg", null, null },
-                    { 31, "Toronto", "Canada", "travel-1-full.jpg", "travel-1-regular.jpg", null, null },
-                    { 32, "Vancouver", "Canada", "travel-2-full.jpg", "travel-2-regular.jpg", null, null },
-                    { 33, "Calgary", "Canada", "travel-3-full.jpg", "travel-3-regular.jpg", null, null },
-                    { 34, "Victoria", "Canada", "travel-4-full.jpg", "travel-4-regular.jpg", null, null },
-                    { 35, "Ottawa", "Canada", "travel-5-full.jpg", "travel-5-regular.jpg", null, null },
-                    { 36, "Montreal", "Canada", "travel-6-full.jpg", "travel-6-regular.jpg", null, null },
-                    { 37, "Toronto", "Canada", "travel-7-full.jpg", "travel-7-regular.jpg", null, null },
-                    { 38, "Vancouver", "Canada", "travel-8-full.jpg", "travel-8-regular.jpg", null, null },
-                    { 41, "Toronto", "Canada", "animals-1-full.jpg", "animals-1-regular.jpg", null, null },
-                    { 42, "Vancouver", "Canada", "animals-2-full.jpg", "animals-2-regular.jpg", null, null },
-                    { 43, "Calgary", "Canada", "animals-3-full.jpg", "animals-3-regular.jpg", null, null },
-                    { 44, "Victoria", "Canada", "animals-4-full.jpg", "animals-4-regular.jpg", null, null },
-                    { 45, "Ottawa", "Canada", "animals-5-full.jpg", "animals-5-regular.jpg", null, null },
-                    { 46, "Montreal", "Canada", "animals-6-full.jpg", "animals-6-regular.jpg", null, null },
-                    { 47, "Toronto", "Canada", "animals-7-full.jpg", "animals-7-regular.jpg", null, null },
-                    { 48, "Vancouver", "Canada", "animals-8-full.jpg", "animals-8-regular.jpg", null, null },
-                    { 49, "Calgary", "Canada", "animals-9-full.jpg", "animals-9-regular.jpg", null, null },
-                    { 51, "Toronto", "Canada", "fashion-1-full.jpg", "fashion-1-regular.jpg", null, null },
-                    { 52, "Vancouver", "Canada", "fashion-2-full.jpg", "fashion-2-regular.jpg", null, null },
-                    { 53, "Calgary", "Canada", "fashion-3-full.jpg", "fashion-3-regular.jpg", null, null },
-                    { 54, "Victoria", "Canada", "fashion-4-full.jpg", "fashion-4-regular.jpg", null, null },
-                    { 55, "Ottawa", "Canada", "fashion-5-full.jpg", "fashion-5-regular.jpg", null, null },
-                    { 56, "Montreal", "Canada", "fashion-6-full.jpg", "fashion-6-regular.jpg", null, null },
-                    { 57, "Toronto", "Canada", "fashion-7-full.jpg", "fashion-7-regular.jpg", null, null },
-                    { 58, "Vancouver", "Canada", "fashion-8-full.jpg", "fashion-8-regular.jpg", null, null },
-                    { 59, "Calgary", "Canada", "fashion-9-full.jpg", "fashion-9-regular.jpg", null, null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Topics",
                 columns: new[] { "Id", "Slug", "Title" },
                 values: new object[,]
@@ -125,6 +73,58 @@ namespace WebApplication1.Migrations
                     { 8, "Dwayne Jacob", "profile-8.jpg", "jdwayne" },
                     { 9, "Allison Saeng", "profile-9.jpg", "saeng" },
                     { 10, "Adrea Santos", "profile-10.jpg", "santa" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Photos",
+                columns: new[] { "Id", "City", "Country", "FullUrl", "RegularUrl", "TopicId", "UserAccountId" },
+                values: new object[,]
+                {
+                    { 1, "Montreal", "Canada", "Image-1-Full.jpeg", "Image-1-Regular.jpeg", 1, 1 },
+                    { 11, "Toronto", "Canada", "people-1-full.jpg", "people-1-regular.jpg", 1, 1 },
+                    { 12, "Vancouver", "Canada", "people-2-full.jpg", "people-2-regular.jpg", 1, 2 },
+                    { 13, "Calgary", "Canada", "people-3-full.jpg", "people-3-regular.jpg", 1, 3 },
+                    { 14, "Victoria", "Canada", "people-4-full.jpg", "people-4-regular.jpg", 1, 4 },
+                    { 15, "Ottawa", "Canada", "people-5-full.jpg", "people-5-regular.jpg", 1, 5 },
+                    { 16, "Montreal", "Canada", "people-6-full.jpg", "people-6-regular.jpg", 1, 6 },
+                    { 17, "Toronto", "Canada", "people-7-full.jpg", "people-7-regular.jpg", 1, 7 },
+                    { 18, "Vancouver", "Canada", "people-8-full.jpg", "people-8-regular.jpg", 1, 8 },
+                    { 19, "Calgary", "Canada", "people-9-full.jpg", "people-9-regular.jpg", 1, 9 },
+                    { 21, "Toronto", "Canada", "nature-1-full.jpg", "nature-1-regular.jpg", 2, 1 },
+                    { 22, "Vancouver", "Canada", "nature-2-full.jpg", "nature-2-regular.jpg", 2, 2 },
+                    { 23, "Calgary", "Canada", "nature-3-full.jpg", "nature-3-regular.jpg", 2, 3 },
+                    { 24, "Victoria", "Canada", "nature-4-full.jpg", "nature-4-regular.jpg", 2, 4 },
+                    { 25, "Ottawa", "Canada", "nature-5-full.jpg", "nature-5-regular.jpg", 2, 5 },
+                    { 26, "Montreal", "Canada", "nature-6-full.jpg", "nature-6-regular.jpg", 2, 6 },
+                    { 27, "Toronto", "Canada", "nature-7-full.jpg", "nature-7-regular.jpg", 2, 7 },
+                    { 28, "Vancouver", "Canada", "nature-8-full.jpg", "nature-8-regular.jpg", 2, 8 },
+                    { 29, "Calgary", "Canada", "nature-9-full.jpg", "nature-9-regular.jpg", 2, 9 },
+                    { 31, "Toronto", "Canada", "travel-1-full.jpg", "travel-1-regular.jpg", 3, 1 },
+                    { 32, "Vancouver", "Canada", "travel-2-full.jpg", "travel-2-regular.jpg", 3, 2 },
+                    { 33, "Calgary", "Canada", "travel-3-full.jpg", "travel-3-regular.jpg", 3, 3 },
+                    { 34, "Victoria", "Canada", "travel-4-full.jpg", "travel-4-regular.jpg", 3, 4 },
+                    { 35, "Ottawa", "Canada", "travel-5-full.jpg", "travel-5-regular.jpg", 3, 5 },
+                    { 36, "Montreal", "Canada", "travel-6-full.jpg", "travel-6-regular.jpg", 3, 6 },
+                    { 37, "Toronto", "Canada", "travel-7-full.jpg", "travel-7-regular.jpg", 3, 7 },
+                    { 38, "Vancouver", "Canada", "travel-8-full.jpg", "travel-8-regular.jpg", 3, 8 },
+                    { 41, "Toronto", "Canada", "animals-1-full.jpg", "animals-1-regular.jpg", 4, 1 },
+                    { 42, "Vancouver", "Canada", "animals-2-full.jpg", "animals-2-regular.jpg", 4, 2 },
+                    { 43, "Calgary", "Canada", "animals-3-full.jpg", "animals-3-regular.jpg", 4, 3 },
+                    { 44, "Victoria", "Canada", "animals-4-full.jpg", "animals-4-regular.jpg", 4, 4 },
+                    { 45, "Ottawa", "Canada", "animals-5-full.jpg", "animals-5-regular.jpg", 4, 5 },
+                    { 46, "Montreal", "Canada", "animals-6-full.jpg", "animals-6-regular.jpg", 4, 6 },
+                    { 47, "Toronto", "Canada", "animals-7-full.jpg", "animals-7-regular.jpg", 4, 7 },
+                    { 48, "Vancouver", "Canada", "animals-8-full.jpg", "animals-8-regular.jpg", 4, 8 },
+                    { 49, "Calgary", "Canada", "animals-9-full.jpg", "animals-9-regular.jpg", 4, 9 },
+                    { 51, "Toronto", "Canada", "fashion-1-full.jpg", "fashion-1-regular.jpg", 5, 1 },
+                    { 52, "Vancouver", "Canada", "fashion-2-full.jpg", "fashion-2-regular.jpg", 5, 2 },
+                    { 53, "Calgary", "Canada", "fashion-3-full.jpg", "fashion-3-regular.jpg", 5, 3 },
+                    { 54, "Victoria", "Canada", "fashion-4-full.jpg", "fashion-4-regular.jpg", 5, 4 },
+                    { 55, "Ottawa", "Canada", "fashion-5-full.jpg", "fashion-5-regular.jpg", 5, 5 },
+                    { 56, "Montreal", "Canada", "fashion-6-full.jpg", "fashion-6-regular.jpg", 5, 6 },
+                    { 57, "Toronto", "Canada", "fashion-7-full.jpg", "fashion-7-regular.jpg", 5, 7 },
+                    { 58, "Vancouver", "Canada", "fashion-8-full.jpg", "fashion-8-regular.jpg", 5, 8 },
+                    { 59, "Calgary", "Canada", "fashion-9-full.jpg", "fashion-9-regular.jpg", 5, 9 }
                 });
         }
 
@@ -357,6 +357,11 @@ namespace WebApplication1.Migrations
                 keyValue: 59);
 
             migrationBuilder.DeleteData(
+                table: "UserAccounts",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
                 table: "Topics",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -425,11 +430,6 @@ namespace WebApplication1.Migrations
                 table: "UserAccounts",
                 keyColumn: "Id",
                 keyValue: 9);
-
-            migrationBuilder.DeleteData(
-                table: "UserAccounts",
-                keyColumn: "Id",
-                keyValue: 10);
 
             migrationBuilder.AlterColumn<int>(
                 name: "Id",

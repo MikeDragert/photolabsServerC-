@@ -18,6 +18,7 @@ namespace Photolabs.DAL {
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
       modelBuilder.UseIdentityColumns();
+      new PhotolabsInitializer().Seed(modelBuilder);
     }
   }
 }

@@ -23,8 +23,25 @@ namespace PhotolabsCSharp.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Index()
     {
-      return _context.Photos != null ?
-        Ok(_context.Photos) :
+      var photos = (
+        from photo in _context.Photos
+        join userAccount in _context.UserAccounts
+        on photo.UserAccountId equals userAccount.Id
+        select new
+        {
+          id = photo.Id,
+          fullUrl = photo.FullUrl,
+          regularUrl = photo.RegularUrl,
+          username = userAccount.Username,
+          name = userAccount.FullName,
+          profile = userAccount.ProfileUrl,
+          city = photo.City,
+          country = photo.Country
+        }
+      ).ToList();
+      
+      return photos != null ?
+        Ok(photos) :
         NotFound();
     }
 

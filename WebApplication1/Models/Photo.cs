@@ -8,5 +8,7 @@ namespace Photolabs.Models {
     public string RegularUrl{ get; set; }
     public string City{ get; set; }
     public string Country{ get; set; }
+    public int? UserAccountId { get; set; }
+    public int? TopicId { get; set; }
   }
 }
