@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
+using SQLitePCL;
 
 namespace PhotolabsCSharp.Controllers
 {
@@ -27,8 +28,7 @@ namespace PhotolabsCSharp.Controllers
         from photo in _context.Photos
         join userAccount in _context.UserAccounts
         on photo.UserAccountId equals userAccount.Id
-        select new
-        {
+        select new {
           id = photo.Id,
           urls = new Dictionary<string, string> {
             {"full", photo.FullUrl}, 
@@ -43,10 +43,30 @@ namespace PhotolabsCSharp.Controllers
             {"city", photo.City}, 
             {"country", photo.Country}
           },
-          similar_photos = "not implemented"
+          similar_photos = (
+            from simPhoto in _context.Photos
+            join simUserAccount in _context.UserAccounts
+            on simPhoto.UserAccountId equals simUserAccount.Id
+            where simPhoto.Id != photo.Id && simPhoto.TopicId == photo.TopicId
+            select new {
+              id = simPhoto.Id,
+              urls = new Dictionary<string, string> {
+                {"full", simPhoto.FullUrl},
+                {"regular",simPhoto.RegularUrl}
+              },
+              user = new Dictionary<string, string> {
+                {"username", simUserAccount.Username},
+                {"name", simUserAccount.FullName},
+                {"profile", simUserAccount.ProfileUrl}
+              },
+              location = new Dictionary<string, string> {
+                {"city", simPhoto.City},
+                {"country", simPhoto.Country}
+              },
+            }
+          ).Take(4).ToList()
         }
       ).ToList();
-
            
       return photos != null ?
         Ok(photos) :
