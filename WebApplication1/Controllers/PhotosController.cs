@@ -30,16 +30,24 @@ namespace PhotolabsCSharp.Controllers
         select new
         {
           id = photo.Id,
-          fullUrl = photo.FullUrl,
-          regularUrl = photo.RegularUrl,
-          username = userAccount.Username,
-          name = userAccount.FullName,
-          profile = userAccount.ProfileUrl,
-          city = photo.City,
-          country = photo.Country
+          urls = new Dictionary<string, string> {
+            {"full", photo.FullUrl}, 
+            {"regular",photo.RegularUrl}
+          },
+          user = new Dictionary<string, string> {
+            {"username", userAccount.Username}, 
+            {"name", userAccount.FullName}, 
+            {"profile", userAccount.ProfileUrl}
+          },
+          location = new Dictionary<string, string> {
+            {"city", photo.City}, 
+            {"country", photo.Country}
+          },
+          similar_photos = "not implemented"
         }
       ).ToList();
-      
+
+           
       return photos != null ?
         Ok(photos) :
         NotFound();
