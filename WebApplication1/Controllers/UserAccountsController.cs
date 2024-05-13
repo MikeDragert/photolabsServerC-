@@ -8,6 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
 
+/*
+ * 
+ * TODO:  currently not sure if this is needed yet.  Either fix or remove it!!
+ * 
+ * 
+ */
+
+
 namespace PhotolabsCSharp.Controllers
 {
     public class UserAccountsController : Controller
