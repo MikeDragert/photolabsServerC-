@@ -2,18 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
 using Photolabs.Models;
+using PhotolabsCSharp.Helpers;
 
 namespace PhotolabsCSharp.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class TopicsController : Controller
-  {
+  public class TopicsController : Controller {
     private readonly PhotolabContext _context;
 
-    public TopicsController(PhotolabContext context)
-    {
-        _context = context;
+    public TopicsController(PhotolabContext context) {
+      _context = context;
     }
 
     // GET: Topics
@@ -21,18 +20,28 @@ namespace PhotolabsCSharp.Controllers
     [HttpGet("index")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Topic>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Index()
-    {
+    public async Task<IActionResult> Index() {
       //todo: return list of topics
-      return _context.Topics != null ? 
+      return _context.Topics != null ?
         Ok(await _context.Topics.ToListAsync()) :
         NotFound();
     }
 
     //GET: topics/photos/:id
     // todo: get photo list for supplied topic id
-    
-    
+    [HttpGet("photos/{topicId}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PhotoExtended>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetPhotoForTopic(int topicId) {
+
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+      PhotoHelper photoHelper = new PhotoHelper(_context);
+      var photos = photoHelper.getPhotos(serverUrl, topicId);
+      return photos != null ?
+        Ok(photos) :
+        NotFound();
+    }
+
     // GET: Topics/5
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Topic>))]

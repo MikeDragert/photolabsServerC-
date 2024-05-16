@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Photolabs.DAL;
 using Photolabs.Models;
+using PhotolabsCSharp.Helpers;
 using SQLitePCL;
 using System.Linq;
 using System.Linq.Expressions;
@@ -124,8 +125,8 @@ namespace PhotolabsCSharp.Controllers
     {
       string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
 
-
-      var photos = getPhotos(serverUrl, null);
+      PhotoHelper photoHelper = new PhotoHelper(_context);
+      var photos = photoHelper.getPhotos(serverUrl);
 
       return photos != null ?
         Ok(photos) :
@@ -162,7 +163,8 @@ namespace PhotolabsCSharp.Controllers
       string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
       string[] searchItems = searchString.ToLower().Split(' ');
 
-      var photos = getPhotos(serverUrl, searchItems);
+      PhotoHelper photoHelper = new PhotoHelper(_context);
+      var photos = photoHelper.getPhotos(serverUrl, searchItems);
 
       return photos != null ?
         Ok(photos) :
