@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Photolabs.DAL;
 using Photolabs.Models;
 using SQLitePCL;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace PhotolabsCSharp.Controllers
 {
@@ -11,85 +16,157 @@ namespace PhotolabsCSharp.Controllers
   public class PhotosController : Controller
   {
     private readonly PhotolabContext _context;
-
+    
     public PhotosController(PhotolabContext context)
     {
       _context = context;
     }
 
-    // GET: Photos
-    [HttpGet]
-    [HttpGet("index")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Photo>))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Index()
-    {
-      var photos = (
-        from photo in _context.Photos
-        join userAccount in _context.UserAccounts
-        on photo.UserAccountId equals userAccount.Id
-        select new {
-          id = photo.Id,
-          urls = new Dictionary<string, string> {
-            {"full", photo.FullUrl}, 
-            {"regular",photo.RegularUrl}
+    List<PhotoExtended> getPhotos(string serverUrl, string[] searchTerms) {
+
+      
+      var query = _context.Photos
+        .Join(
+          _context.UserAccounts,
+          p => p.UserAccountId,
+          ua => ua.Id,
+          (p, ua) => new {
+            Id = p.Id,
+            FullUrl = p.FullUrl,
+            RegularUrl = p.RegularUrl,
+            City = p.City,
+            Country = p.Country,
+            Username = ua.Username,
+            FullName = ua.FullName,
+            ProfileUrl = ua.ProfileUrl,
+            TopicId = p.TopicId
+          }
+        )
+        .Join(
+          _context.Topics,
+          p => p.TopicId,
+          t => t.Id,
+          (p, t) => new {
+            Id = p.Id,
+            FullUrl = p.FullUrl,
+            RegularUrl = p.RegularUrl,
+            City = p.City,
+            Country = p.Country,
+            Username = p.Username,
+            FullName = p.FullName,
+            ProfileUrl = p.ProfileUrl,
+            TopicTitle = t.Title,
+            TopicId = t.Id
+          }
+        );
+
+      if (searchTerms != null) {
+        foreach (string searchTerm in searchTerms) {
+          query = query.Where(photo =>
+            photo.City.ToLower().Contains(searchTerm) ||
+            photo.Country.ToLower().Contains(searchTerm) ||
+            photo.Username.ToLower().Contains(searchTerm) ||
+            photo.FullName.ToLower().Contains(searchTerm) ||
+            photo.TopicTitle.ToLower().Contains(searchTerm)
+          );
+        }
+      }
+
+      return query.Select(photo => new PhotoExtended
+        {
+          Id = photo.Id,
+          Urls = new Dictionary<string, string> {
+            {"full", $"{serverUrl}{photo.FullUrl}"},
+            {"regular",$"{serverUrl}{photo.RegularUrl}"}
           },
-          user = new Dictionary<string, string> {
-            {"username", userAccount.Username}, 
-            {"name", userAccount.FullName}, 
-            {"profile", userAccount.ProfileUrl}
+          User = new Dictionary<string, string> {
+            {"username", photo.Username},
+            {"name", photo.FullName},
+            {"profile", $"{serverUrl}{photo.ProfileUrl}"}
           },
-          location = new Dictionary<string, string> {
-            {"city", photo.City}, 
+          Location = new Dictionary<string, string> {
+            {"city", photo.City},
             {"country", photo.Country}
           },
-          similar_photos = (
+          TopicTitle = photo.TopicTitle,
+          SimilarPhotos = (
             from simPhoto in _context.Photos
             join simUserAccount in _context.UserAccounts
             on simPhoto.UserAccountId equals simUserAccount.Id
             where simPhoto.Id != photo.Id && simPhoto.TopicId == photo.TopicId
-            select new {
-              id = simPhoto.Id,
-              urls = new Dictionary<string, string> {
-                {"full", simPhoto.FullUrl},
-                {"regular",simPhoto.RegularUrl}
+            select new PhotoExtended
+            {
+              Id = simPhoto.Id,
+              Urls = new Dictionary<string, string> {
+                {"full",  $"{serverUrl}{simPhoto.FullUrl}"},
+                {"regular",$"{serverUrl}{simPhoto.RegularUrl}"}
               },
-              user = new Dictionary<string, string> {
+              User = new Dictionary<string, string> {
                 {"username", simUserAccount.Username},
                 {"name", simUserAccount.FullName},
-                {"profile", simUserAccount.ProfileUrl}
+                {"profile", $"{serverUrl}{simUserAccount.ProfileUrl}"}
               },
-              location = new Dictionary<string, string> {
+              Location = new Dictionary<string, string> {
                 {"city", simPhoto.City},
                 {"country", simPhoto.Country}
               },
             }
           ).Take(4).ToList()
-        }
-      ).ToList();
-           
+        }).ToList();
+    }
+
+    // GET: Photos
+    [HttpGet]
+    [HttpGet("index")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PhotoExtended>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Index()
+    {
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+
+
+      var photos = getPhotos(serverUrl, null);
+
       return photos != null ?
         Ok(photos) :
         NotFound();
     }
 
     // GET: Photos/5
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Photo>))]
+    //we are not going to retrieve by id for this interface
+    //[HttpGet("{id}")]
+    //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Photo>))]
+    //[ProducesResponseType(StatusCodes.Status404NotFound)]
+    //public async Task<IActionResult> Details(int? id) {
+    //  if (id == null || _context.Photos == null) {
+    //    return NotFound();
+    //  }
+
+    //  var photo = await _context.Photos
+    //    .FirstOrDefaultAsync(m => m.Id == id);
+    //  if (photo == null) {
+    //    return NotFound();
+    //  }
+
+    //  return Ok(photo);
+    //}
+
+
+
+    // GET: Photos/5
+    [HttpGet("{searchString}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PhotoExtended>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Details(int? id)
-    {
-      if (id == null || _context.Photos == null) {
-        return NotFound();
-      }
+    public async Task<IActionResult> Search(string searchString) {
 
-      var photo = await _context.Photos
-        .FirstOrDefaultAsync(m => m.Id == id);
-      if (photo == null) {
-        return NotFound();
-      }
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+      string[] searchItems = searchString.ToLower().Split(' ');
 
-      return Ok(photo);
+      var photos = getPhotos(serverUrl, searchItems);
+
+      return photos != null ?
+        Ok(photos) :
+        NotFound();
     }
 
     // POST: Photos/Create

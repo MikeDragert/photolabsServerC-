@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Photolabs.Models{
+namespace Photolabs.Models {
   public class UserAccount
   {
     [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
