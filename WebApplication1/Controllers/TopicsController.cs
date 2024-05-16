@@ -23,11 +23,16 @@ namespace PhotolabsCSharp.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Index()
     {
+      //todo: return list of topics
       return _context.Topics != null ? 
         Ok(await _context.Topics.ToListAsync()) :
         NotFound();
     }
 
+    //GET: topics/photos/:id
+    // todo: get photo list for supplied topic id
+    
+    
     // GET: Topics/5
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Topic>))]
