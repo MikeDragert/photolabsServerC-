@@ -24,9 +24,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment()) {
   app.UseDeveloperExceptionPage();
 }
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("AllowAll");
-app.UseAuthorization();
+//app.UseAuthorization();
 app.MapControllers();
 app.Run();

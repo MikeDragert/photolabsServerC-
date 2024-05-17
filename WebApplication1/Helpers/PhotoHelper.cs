@@ -10,7 +10,7 @@ namespace PhotolabsCSharp.Helpers {
       _context = context;
     }
 
-    public List<PhotoExtended> getPhotos(string serverUrl, int topidId = 0) {
+    public List<PhotoExtended> getPhotos(string serverUrl, int topidId = -1) {
       string[] enptyString = { };
       return getPhotos(serverUrl, enptyString, topidId);
     }
