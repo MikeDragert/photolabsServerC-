@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Photolabs.Models;
+﻿using Photolabs.Models;
 using Photolabs.DAL;
 
 namespace PhotolabsCSharp.Helpers {

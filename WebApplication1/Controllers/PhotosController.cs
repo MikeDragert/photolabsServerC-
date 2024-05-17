@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Photolabs.DAL;
 using Photolabs.Models;
 using PhotolabsCSharp.Helpers;
-using SQLitePCL;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace PhotolabsCSharp.Controllers
 {

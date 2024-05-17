@@ -1,8 +1,6 @@
 ﻿
 using Photolabs.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-
 
 namespace Photolabs.DAL {
   public class PhotolabContext : DbContext {

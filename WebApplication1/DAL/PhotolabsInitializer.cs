@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-//using Photolabs.Controllers;
-using Photolabs.Models;
+﻿using Photolabs.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Photolabs.DAL {
   public class PhotolabsInitializer {

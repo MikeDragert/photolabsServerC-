@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Photolabs.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Photolabs.Models {
   public class Photo {
