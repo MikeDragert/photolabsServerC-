@@ -34,7 +34,7 @@ namespace PhotolabsCSharp.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetPhotoForTopic(int topicId) {
 
-      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/Images/";
       PhotoHelper photoHelper = new PhotoHelper(_context);
       var photos = photoHelper.getPhotos(serverUrl, topicId);
       return photos != null ?

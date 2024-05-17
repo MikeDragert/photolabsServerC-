@@ -30,7 +30,7 @@ namespace PhotolabsCSharp.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Index()
     {
-      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/Images/";
 
       PhotoHelper photoHelper = new PhotoHelper(_context);
       var photos = photoHelper.getPhotos(serverUrl);
@@ -67,7 +67,7 @@ namespace PhotolabsCSharp.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Search(string searchString) {
 
-      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/";
+      string serverUrl = $"{Request.Scheme}://{Request.Host.Host}:{Request.Host.Port}/Images/";
       string[] searchItems = searchString.ToLower().Split(' ');
 
       PhotoHelper photoHelper = new PhotoHelper(_context);

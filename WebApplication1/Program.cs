@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Photolabs.DAL;
+using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
@@ -24,9 +25,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment()) {
   app.UseDeveloperExceptionPage();
 }
-//app.UseHttpsRedirection();
+app.UseStaticFiles(new StaticFileOptions
+{
+  FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Content/images")),
+  RequestPath = "/images"
+});
+app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("AllowAll");
-//app.UseAuthorization();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();
