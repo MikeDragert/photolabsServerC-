@@ -88,7 +88,7 @@ namespace PhotolabsCSharp.Helpers {
             {"country", photo.Country}
           },
         TopicTitle = photo.TopicTitle,
-        SimilarPhotos = (
+        similar_photos = (
             from simPhoto in _context.Photos
             join simUserAccount in _context.UserAccounts
             on simPhoto.UserAccountId equals simUserAccount.Id
@@ -110,7 +110,7 @@ namespace PhotolabsCSharp.Helpers {
                 {"country", simPhoto.Country}
               },
             }
-          ).Take(4).ToList()
+          ).Take(8).ToList()
       }).ToList();
     }
 

@@ -10,6 +10,6 @@ namespace Photolabs.Models {
     public Dictionary<string, string>? User { get; set; }
     public Dictionary<string, string>? Location { get; set; }
     public string? TopicTitle { get; set; }
-    public List<PhotoExtended>? SimilarPhotos { set; get; }
+    public List<PhotoExtended>? similar_photos { set; get; }
   }
 }
