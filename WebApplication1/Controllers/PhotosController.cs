@@ -35,27 +35,6 @@ namespace PhotolabsCSharp.Controllers
     }
 
     // GET: Photos/5
-    //we are not going to retrieve by id for this interface
-    //[HttpGet("{id}")]
-    //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Photo>))]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //public async Task<IActionResult> Details(int? id) {
-    //  if (id == null || _context.Photos == null) {
-    //    return NotFound();
-    //  }
-
-    //  var photo = await _context.Photos
-    //    .FirstOrDefaultAsync(m => m.Id == id);
-    //  if (photo == null) {
-    //    return NotFound();
-    //  }
-
-    //  return Ok(photo);
-    //}
-
-
-
-    // GET: Photos/5
     [HttpGet("{searchString}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PhotoExtended>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
